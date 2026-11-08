@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>SuperBuy spreadsheet: tamanhos, QC e escolhas com critério</title>
+<meta name="description" content="Explore o guia SuperBuy spreadsheet em português: categorias de moda, medidas, fotografias QC e custos a confirmar antes de escolher uma peça.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#302340">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_PT">
+<meta property="og:title" content="SuperBuy spreadsheet — um olhar atento antes da compra">
+<meta property="og:description" content="Um guia independente para comparar roupa, calçado e acessórios: medidas, imagens e orçamento, sem decisões apressadas.">
+<meta property="og:image" content="https://si.geilicdn.com/open1862809525-1234478995-07a000000193d01b44ca0aa0834c_800_800.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://si.geilicdn.com">
+<style>
+:root{--paper:#f5f2eb;--ink:#302340;--muted:#665c6e;--line:#d9d0dc;--lime:#dfef98;--white:#fff;--soft:#ebe4ef}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}
+a:focus-visible,summary:focus-visible{outline:3px solid #7850a0;outline-offset:5px}
+img{display:block;max-width:100%;height:auto}
+h1,h2,h3,p,figure{margin:0}
+h1,h2,h3{line-height:1.12;letter-spacing:-.045em}
+h1{font-size:clamp(2.7rem,6vw,5.3rem);font-weight:650}
+h2{font-size:clamp(2rem,4vw,3rem);font-weight:620}
+h3{font-size:1.35rem}
+p+p{margin-top:1rem}
+.wrap{width:min(1180px,92%);margin:auto}
+.top{background:var(--ink);color:var(--paper)}
+header{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:22px 0}
+.logo{font-size:1.3rem;font-weight:750;letter-spacing:-.05em;text-decoration:none;white-space:nowrap}
+.edition{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase}
+.category-section{padding:26px 0 30px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:.74rem;font-weight:750;letter-spacing:.13em;text-transform:uppercase}
+.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:14px}
+.categories a{text-decoration:none;padding:12px 13px;background:var(--white);border:1px solid var(--line);border-radius:4px;font-size:.84rem;font-weight:650;display:flex;justify-content:space-between;gap:8px}
+.categories a::after{content:"↗";color:var(--muted)}
+.categories a:hover{background:var(--lime)}
+.hero{display:grid;grid-template-columns:1.15fr 1fr;gap:5%;padding:62px 0;align-items:center}
+.hero h1{margin:20px 0 25px}
+.hero h1 span{display:block;color:#785887}
+.lead{font-size:1.13rem;max-width:55ch;color:var(--muted)}
+.button{display:inline-flex;align-items:center;gap:22px;background:var(--ink);color:var(--white);padding:14px 22px;text-decoration:none;border-radius:4px;font-weight:650;margin-top:25px}
+.button:hover{background:#51395f}
+.small{font-size:.82rem;color:var(--muted)}
+.hero .small{margin-top:16px}
+.hero-visual{background:var(--soft);padding:18px 18px 0;border-radius:48% 48% 5px 5px;overflow:hidden}
+.hero-visual img{width:100%;aspect-ratio:1;object-fit:contain;background:white;border-radius:45% 45% 3px 3px}
+.hero-visual figcaption{padding:15px 4px;font-size:.78rem}
+.answer{display:grid;grid-template-columns:1fr 2fr;gap:30px;background:var(--lime);padding:30px;border-radius:5px}
+.answer h2{font-size:1.5rem}
+.answer p{max-width:78ch}
+.section{padding:65px 0;border-bottom:1px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:28px}
+.section-head p{max-width:42ch;color:var(--muted)}
+.section-head .eyebrow{margin-bottom:12px}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{border:1px solid var(--line);background:white;border-radius:5px;overflow:hidden}
+.card img{width:100%;aspect-ratio:1;object-fit:contain;background:#fff}
+.card figcaption{padding:22px}
+.card p{margin-top:12px;color:var(--muted);font-size:.94rem}
+.card a{display:inline-block;margin-top:15px;font-weight:650;font-size:.88rem}
+.caption-note{margin-top:18px;max-width:90ch}
+.topics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.topic{padding:20px 16px;background:var(--soft);border-radius:4px}
+.topic h3{font-size:1.05rem;letter-spacing:-.02em}
+.topic p{font-size:.85rem;margin-top:9px;color:var(--muted)}
+.articles{display:grid;grid-template-columns:repeat(2,1fr);gap:0 34px}
+.article{padding:28px 0;border-top:1px solid var(--line)}
+.article .num{display:block;font-size:.75rem;font-weight:750;letter-spacing:.09em;margin-bottom:13px;color:#785887}
+.article h3{margin-bottom:16px}
+.article p{color:var(--muted);font-size:.95rem}
+.article strong{color:var(--ink);font-weight:650}
+.table-wrap{overflow-x:auto;margin-top:26px}
+table{width:100%;border-collapse:collapse;font-size:.93rem;text-align:left}
+th,td{padding:17px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--soft)}
+td:first-child{font-weight:650;min-width:145px}
+.faq-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:55px}
+.faq-intro p{margin-top:20px;color:var(--muted)}
+details{border-top:1px solid var(--line);padding:19px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{font-weight:650;cursor:pointer;line-height:1.45;padding-right:12px}
+details p{padding-top:14px;color:var(--muted);font-size:.94rem}
+.closing{background:var(--ink);color:var(--paper);padding:45px;border-radius:5px;margin:45px 0;display:flex;justify-content:space-between;align-items:center;gap:25px}
+.closing h2{font-size:2rem}
+.closing p{margin-top:14px;max-width:60ch}
+.closing .button{background:var(--lime);color:var(--ink);white-space:nowrap;margin:0}
+footer{padding:0 0 30px}
+footer p{max-width:95ch;font-size:.8rem;color:var(--muted)}
+footer .logo{display:block;margin-bottom:14px}
+.footer-bottom{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;font-size:.75rem;color:var(--muted)}
+@media(max-width:850px){
+.categories{grid-template-columns:repeat(3,1fr)}
+.hero{gap:25px}
+.topics{grid-template-columns:repeat(2,1fr)}
+.gallery{gap:12px}
+.card figcaption{padding:16px}
+.faq-layout{gap:25px}
+}
+@media(max-width:600px){
+header{padding:17px 0}
+.edition{font-size:.62rem;max-width:95px;text-align:right}
+.categories{grid-template-columns:repeat(2,1fr)}
+.categories a{font-size:.78rem}
+.hero{grid-template-columns:1fr;padding:36px 0;gap:30px}
+.hero-visual{max-width:420px;width:100%;margin:auto}
+.hero h1{margin-top:16px}
+.answer{grid-template-columns:1fr;padding:24px;gap:14px}
+.section{padding:42px 0}
+.section-head{display:block}
+.section-head p{margin-top:17px}
+.gallery{grid-template-columns:1fr}
+.card{display:grid;grid-template-columns:42% 1fr;align-items:center}
+.card img{align-self:center}
+.card h3{font-size:1.13rem}
+.card p{font-size:.85rem}
+.articles{grid-template-columns:1fr}
+.faq-layout{grid-template-columns:1fr;gap:25px}
+.closing{display:block;padding:27px}
+.closing .button{margin-top:23px}
+.footer-bottom{display:block}
+.footer-bottom span{display:block;margin-top:8px}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebPage",
+      "name":"SuperBuy spreadsheet: tamanhos, QC e escolhas com critério",
+      "inLanguage":"pt",
+      "description":"Guia independente para organizar pesquisas de moda, comparar medidas, interpretar fotografias QC e preparar um orçamento.",
+      "about":{"@type":"Thing","name":"SuperBuy spreadsheet"}
+    },
+    {
+      "@type":"Article",
+      "headline":"Do anúncio à lista final: seis verificações úteis",
+      "inLanguage":"pt",
+      "author":{
+        "@type":"Organization",
+        "name":"HipobuyFind — guia editorial independente"
+      },
+      "description":"Como comparar calçado e roupa, interpretar imagens QC, organizar links e estimar custos antes de escolher."
+    },
+    {
+      "@type":"FAQPage",
+      "inLanguage":"pt",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"O que é uma SuperBuy spreadsheet?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"É uma lista organizada de links e informações sobre produtos pesquisados para possível compra através da SuperBuy. A inclusão numa lista não confirma disponibilidade, autenticidade ou aceitação pelo serviço."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Este guia é o site oficial da SuperBuy?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Não. É um guia editorial independente. Os links de exploração conduzem ao catálogo HipobuyFind; contas, pagamentos e condições de um agente devem ser verificados diretamente nesse serviço."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"As fotografias QC provam autenticidade?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Não. Podem ajudar a observar cor, acabamento e correspondência da variante, mas não certificam autenticidade, composição ou durabilidade."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"O preço do artigo inclui o envio internacional?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Não presuma que inclui. Confirme separadamente artigo, entrega local, serviço, câmbio, transporte internacional e encargos aplicáveis ao destino."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Como escolher o tamanho sem experimentar?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Compare a tabela do anúncio com uma peça que já usa. Para calçado, confirme o sistema de numeração e as medidas disponíveis; comprimento do pé e palmilha são referências diferentes."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"É preciso descarregar uma folha de cálculo?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Não para consultar este guia e explorar as categorias ligadas. Pode criar uma folha pessoal para guardar links, variantes, medidas e datas de verificação."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<link rel="canonical" href="https://kakobuyfinds.github.io/agbuy/">
+</head>
+<body>
+<!--
+index.html.
+Pesquisa editorial: Google não ficou acessível nesta sessão; não foi possível
+confirmar os dez primeiros resultados do Google. Foram consultadas dez páginas
+encontradas numa pesquisa web de SuperBuy spreadsheet:
+superbuyspreadsheet.org; linktr.ee/Superbuysheet; www.superbuy.cloud;
+superbuy.club; superbuyfind.org/spreadsheet; superbuy.spreadsheet.tv;
+www.superbuy.zone; superbuyyupoo.com/en; taofind.com/spreadsheets; superbuy.life.
+Temas observados: diretórios por categoria, links de produtos, tamanhos, QC,
+custos e organização de pesquisas. Texto original; sem reprodução de métricas
+ou promessas dos sites consultados.
+-->
+<div class="top">
+  <header class="wrap">
+    <a class="logo" href="https://www.hipobuyfind.com">hipobuyfind.com</a>
+    <span class="edition">Caderno de escolhas<br>Em português · 01</span>
+  </header>
+</div>
+
+<main class="wrap" id="conteudo">
+  <nav class="category-section" aria-label="Categorias de produtos">
+    <p class="eyebrow">Comece pelo que procura</p>
+    <div class="categories">
+      <a href="https://hipobuyfind.com/category-911-Shoes.html" aria-label="Shoes — calçado">Shoes</a>
+      <a href="https://hipobuyfind.com/category-912-Hoodies%2FSweaters.html" aria-label="Hoodies/Sweaters — camisolas e malhas">Hoodies/Sweaters</a>
+      <a href="https://hipobuyfind.com/category-913-T-Shirts.html">T-Shirts</a>
+      <a href="https://hipobuyfind.com/category-914-Jackets.html" aria-label="Jackets — casacos">Jackets</a>
+      <a href="https://hipobuyfind.com/category-915-Pants%2FShorts.html" aria-label="Pants/Shorts — calças e calções">Pants/Shorts</a>
+      <a href="https://hipobuyfind.com/category-916-Headwear.html" aria-label="Headwear — chapéus e bonés">Headwear</a>
+      <a href="https://hipobuyfind.com/category-917-Sets.html" aria-label="Sets — conjuntos">Sets</a>
+      <a href="https://hipobuyfind.com/category-918-underwear%2Funderpants.html" aria-label="Underwear/underpants — roupa interior">Underwear/underpants</a>
+      <a href="https://hipobuyfind.com/category-919-Jersey.html" aria-label="Jersey — camisolas desportivas">Jersey</a>
+      <a href="https://hipobuyfind.com/category-920-Accessories.html" aria-label="Accessories — acessórios">Accessories</a>
+    </div>
+  </nav>
+
+  <section class="hero" aria-labelledby="titulo">
+    <div>
+      <p class="eyebrow">Menos pressa. Mais critério.</p>
+      <h1 id="titulo">SuperBuy spreadsheet<span>O detalhe muda a escolha.</span></h1>
+      <p class="lead">Uma fotografia desperta o interesse. Medidas, materiais e condições ajudam a decidir. Organize a sua pesquisa de moda com um método simples, da primeira referência à lista final.</p>
+      <a class="button" href="https://www.hipobuyfind.com">Explorar o catálogo <span aria-hidden="true">↗</span></a>
+      <p class="small">Guia independente em português. A exploração continua no HipobuyFind.</p>
+    </div>
+    <figure class="hero-visual">
+      <img src="https://si.geilicdn.com/open1862809525-1234478995-07a000000193d01b44ca0aa0834c_800_800.jpg" width="800" height="800" alt="Imagem de catálogo de um casaco Nike Sportswear Tech Fleece com capuz" fetchpriority="high" decoding="async">
+      <figcaption>01 / Roupa técnica: compare o corte e as medidas da variante.</figcaption>
+    </figure>
+  </section>
+
+  <section class="answer" aria-labelledby="resposta">
+    <h2 id="resposta">O que está a pesquisar?</h2>
+    <p>Uma <strong>SuperBuy spreadsheet</strong> é uma lista organizada de links e informações sobre produtos pesquisados para possível compra através da SuperBuy. A inclusão numa lista não confirma disponibilidade, autenticidade ou aceitação pelo serviço. Use-a como ponto de partida e confirme cada anúncio antes de avançar.</p>
+  </section>
+
+  <section class="section" aria-labelledby="olhar">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Referências visuais</p>
+        <h2 id="olhar">Veja a forma.<br>Investigue os detalhes.</h2>
+      </div>
+      <p>Uma pequena seleção para treinar o olhar: proporções, padrão, fechos e dimensões contam histórias diferentes.</p>
+    </div>
+    <div class="gallery">
+      <figure class="card">
+        <img src="https://si.geilicdn.com/open1648936853-1234478995-7f0b000001975f2be0b80a231226-unadjust_571_581.png" width="571" height="581" loading="lazy" decoding="async" alt="Imagem de catálogo de uma mala Louis Vuitton com monograma multicolorido">
+        <figcaption>
+          <h3>LV: escala e proporção</h3>
+          <p>Confirme largura, altura, profundidade e comprimento da alça. Uma imagem isolada pode esconder o tamanho real.</p>
+          <a href="https://www.hipobuyfind.com">Explorar referências ↗</a>
+        </figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://si.geilicdn.com/pcitem1886999317-412b000001956f7b6b2c0a230115_1200_1200.jpg" width="1200" height="1200" loading="lazy" decoding="async" alt="Imagem de catálogo de uma mala Gucci Dionysus com padrão GG e detalhes vermelhos">
+        <figcaption>
+          <h3>Gucci: padrão e fecho</h3>
+          <p>Observe alinhamentos, ferragens e zonas de contacto. Peça uma fotografia aproximada se um detalhe estiver pouco visível.</p>
+          <a href="https://www.hipobuyfind.com">Comparar detalhes ↗</a>
+        </figcaption>
+      </figure>
+      <figure class="card">
+        <img src="https://si.geilicdn.com/open1623462477-1234478995-25080000019744b0f6d80a231226_1200_1200.jpg" width="1200" height="1200" loading="lazy" decoding="async" alt="Imagem de catálogo de uma mala Dior Book Tote com padrão de monograma">
+        <figcaption>
+          <h3>Dior: estrutura e uso</h3>
+          <p>Procure a vista interior e a descrição do tecido. Pense no peso que pretende transportar e no tipo de abertura.</p>
+          <a href="https://www.hipobuyfind.com">Continuar a pesquisa ↗</a>
+        </figcaption>
+      </figure>
+    </div>
+    <p class="small caption-note">Imagens de anúncios consultados no HipobuyFind, apresentadas como referências visuais. Os nomes identificam o conteúdo anunciado; fotografias e títulos não certificam origem ou autenticidade. Sem associação oficial às marcas.</p>
+  </section>
+
+  <section class="section" aria-labelledby="temas">
+    <p class="eyebrow">Quatro caminhos de pesquisa</p>
+    <h2 id="temas">Uma folha, várias perguntas.</h2>
+    <div class="topics">
+      <div class="topic">
+        <h3>SuperBuy finds</h3>
+        <p>Descobrir referências e reduzir a lista por uso, corte e variante.</p>
+      </div>
+      <div class="topic">
+        <h3>Guia de compras SuperBuy</h3>
+        <p>Perceber o percurso e confirmar as condições atuais do serviço.</p>
+      </div>
+      <div class="topic">
+        <h3>QC SuperBuy</h3>
+        <p>Entender o que procurar nas fotografias de inspeção, quando disponíveis.</p>
+      </div>
+      <div class="topic">
+        <h3>Tamanhos SuperBuy</h3>
+        <p>Organizar medidas do anúncio em vez de confiar apenas na etiqueta.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="artigos">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">Artigos e notas práticas</p>
+        <h2 id="artigos">Do anúncio à lista final:<br>seis verificações úteis.</h2>
+      </div>
+      <p>Leia estas notas antes de guardar uma referência. Cada uma resolve uma dúvida concreta de seleção.</p>
+    </div>
+    <div class="articles">
+      <article class="article">
+        <span class="num">01 / CALÇADO</span>
+        <h3>Sapatilhas: comece pelo ajuste</h3>
+        <p>Para <strong>comparar tamanhos de sapatilhas Nike</strong>, consulte a tabela específica do anúncio. Ao <strong>medir o comprimento do pé</strong>, siga o método indicado; não confunda esse valor com a palmilha. Uma <strong>tabela de numeração de calçado</strong> genérica pode não representar o modelo. Ao <strong>escolher sapatilhas para uso diário</strong>, confirme também largura e finalidade: o aspeto desportivo não comprova aptidão para treino.</p>
+      </article>
+      <article class="article">
+        <span class="num">02 / ROUPA</span>
+        <h3>O corte é uma medida, não uma impressão</h3>
+        <p>Para <strong>comparar medidas de hoodies</strong>, use uma camisola que lhe assente bem. Na <strong>escolha do tamanho de uma T-shirt</strong>, registe peito e comprimento. Ao <strong>verificar o comprimento das mangas</strong>, veja onde começa a medição. A <strong>comparação de cortes de casacos</strong> deve considerar a roupa usada por baixo; uma fotografia com styling não substitui a tabela.</p>
+      </article>
+      <article class="article">
+        <span class="num">03 / ACESSÓRIOS</span>
+        <h3>Do monograma à dimensão útil</h3>
+        <p>Ao <strong>comparar dimensões de malas LV</strong>, pense nos objetos que leva consigo. Para <strong>observar ferragens de malas Gucci</strong>, peça imagens próximas e sem filtros. Na <strong>verificação de materiais de acessórios</strong>, distinga descrição do vendedor de aparência. Se quiser <strong>escolher um boné pelo perímetro</strong>, confirme o intervalo de ajuste. Em lenços Hermès ou bijuteria Dior, verifique igualmente medidas, composição declarada e fecho.</p>
+      </article>
+      <article class="article">
+        <span class="num">04 / IMAGENS QC</span>
+        <h3>Peça a fotografia que responde à dúvida</h3>
+        <p><strong>Como ler fotografias QC?</strong> Compare primeiro o artigo recebido com a variante pedida. Ao <strong>verificar a cor de uma peça</strong>, tenha em conta luz e ecrã. Para <strong>comparar costuras em fotografias</strong>, procure aproximações das zonas relevantes. Se precisar de <strong>pedir medidas antes do envio</strong>, especifique os pontos a medir e confirme a disponibilidade e o custo desse pedido. Uma inspeção visual não é uma certificação.</p>
+      </article>
+      <article class="article">
+        <span class="num">05 / ORÇAMENTO</span>
+        <h3>O preço visível é apenas uma parcela</h3>
+        <p>Para <strong>calcular o custo total de uma compra</strong>, separe artigo, entrega local, serviço, transporte e encargos do destino. Ao <strong>comparar portes internacionais</strong>, use o mesmo destino e os mesmos dados do volume. A <strong>estimativa de peso e volume da encomenda</strong> pode mudar após embalagem. Ao <strong>verificar taxas de pagamento e câmbio</strong>, confirme a moeda de cobrança e as condições apresentadas antes de pagar.</p>
+      </article>
+      <article class="article">
+        <span class="num">06 / ORGANIZAÇÃO</span>
+        <h3>Guarde contexto, além do link</h3>
+        <p>Ao <strong>organizar links de produtos numa folha</strong>, associe o vendedor e a variante exata. Para <strong>comparar variantes do mesmo anúncio</strong>, mantenha cor, tamanho e quantidade em colunas separadas. Antes de <strong>confirmar disponibilidade antes da compra</strong>, reabra a origem e registe a data. O hábito de <strong>guardar referências de roupa por categoria</strong> torna a revisão mais fácil e evita confundir artigos visualmente semelhantes.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="ficha">
+    <p class="eyebrow">A sua ficha de comparação</p>
+    <h2 id="ficha">Registe o que muda a decisão.</h2>
+    <div class="table-wrap">
+      <table>
+        <caption class="small">Campos úteis para uma comparação pessoal de produtos</caption>
+        <thead>
+          <tr>
+            <th scope="col">Campo</th>
+            <th scope="col">O que guardar</th>
+            <th scope="col">Quando rever</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Identificação</th>
+            <td>Origem, vendedor, nome do artigo e variante.</td>
+            <td>Ao guardar a referência e antes de pagar.</td>
+          </tr>
+          <tr>
+            <th scope="row">Ajuste</th>
+            <td>Medidas, unidade e método usado pelo anúncio.</td>
+            <td>Se mudar de tamanho, corte ou modelo.</td>
+          </tr>
+          <tr>
+            <th scope="row">Composição</th>
+            <td>Material declarado e dúvidas ainda sem resposta.</td>
+            <td>Quando a descrição não corresponder às imagens.</td>
+          </tr>
+          <tr>
+            <th scope="row">Orçamento</th>
+            <td>Moeda, preço da variante e custos separados.</td>
+            <td>Antes do pagamento e da escolha do transporte.</td>
+          </tr>
+          <tr>
+            <th scope="row">Condições</th>
+            <td>Restrições, inspeção disponível e regras de devolução.</td>
+            <td>Antes de encomendar e de autorizar o envio.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section faq-layout" aria-labelledby="faq">
+    <div class="faq-intro">
+      <p class="eyebrow">Respostas diretas</p>
+      <h2 id="faq">Perguntas antes<br>de avançar.</h2>
+      <p>A mesma regra orienta todo o guia: confirme o que não consegue concluir a partir de uma imagem ou de um nome.</p>
+    </div>
+    <div>
+      <details open>
+        <summary>O que é uma SuperBuy spreadsheet?</summary>
+        <p>É uma lista organizada de links e informações sobre produtos pesquisados para possível compra através da SuperBuy. A inclusão numa lista não confirma disponibilidade, autenticidade ou aceitação pelo serviço.</p>
+      </details>
+      <details>
+        <summary>Este guia é o site oficial da SuperBuy?</summary>
+        <p>Não. É um guia editorial independente. Os links de exploração conduzem ao catálogo HipobuyFind; contas, pagamentos e condições de um agente devem ser verificados diretamente nesse serviço.</p>
+      </details>
+      <details>
+        <summary>As fotografias QC provam autenticidade?</summary>
+        <p>Não. Podem ajudar a observar cor, acabamento e correspondência da variante, mas não certificam autenticidade, composição ou durabilidade.</p>
+      </details>
+      <details>
+        <summary>O preço do artigo inclui o envio internacional?</summary>
+        <p>Não presuma que inclui. Confirme separadamente artigo, entrega local, serviço, câmbio, transporte internacional e encargos aplicáveis ao destino.</p>
+      </details>
+      <details>
+        <summary>Como escolher o tamanho sem experimentar?</summary>
+        <p>Compare a tabela do anúncio com uma peça que já usa. Para calçado, confirme o sistema de numeração e as medidas disponíveis; comprimento do pé e palmilha são referências diferentes.</p>
+      </details>
+      <details>
+        <summary>É preciso descarregar uma folha de cálculo?</summary>
+        <p>Não para consultar este guia e explorar as categorias ligadas. Pode criar uma folha pessoal para guardar links, variantes, medidas e datas de verificação.</p>
+      </details>
+    </div>
+  </section>
+
+  <aside class="closing">
+    <div>
+      <p class="eyebrow">A próxima escolha começa com uma pergunta</p>
+      <h2>O que precisa de confirmar?</h2>
+      <p>Escolha uma categoria, selecione algumas referências e compare os detalhes que importam para si.</p>
+    </div>
+    <a class="button" href="https://www.hipobuyfind.com">Abrir HipobuyFind ↗</a>
+  </aside>
+</main>
+
+<footer class="wrap">
+  <a class="logo" href="https://www.hipobuyfind.com">hipobuyfind.com</a>
+  <p>Conteúdo informativo independente. SuperBuy, Nike, Louis Vuitton, Gucci, Hermès e Dior são mencionadas para identificação e contexto editorial. Não existe associação oficial ou certificação dos artigos apresentados. Este guia não recebe pagamentos nem processa encomendas; confirme os detalhes e as condições com o vendedor ou serviço escolhido.</p>
+  <div class="footer-bottom">
+    <span>© 2026 · Caderno de escolhas · Português</span>
+    <span>Medidas primeiro. Decisões com contexto.</span>
+  </div>
+</footer>
+</body>
+</html>
